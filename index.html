@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Туристичний Путівник</title>
+    
+    <!-- jQuery та jQuery UI -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- Slick Slider CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
+    <!-- Власний CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+    <h1>Туристичний Путівник</h1>
+    <p>Ласкаво просимо до нашого путівника! Отримайте корисні поради, дізнайтесь про цікаві місця та плануйте свою подорож разом з нами.</p>
+
+    <!-- Розділ акордеона -->
+    <div class="accordion-section">
+        <h2>Корисні поради для подорожей</h2>
+        <div id="accordion">
+            <h3>Як пакувати валізу</h3>
+            <div>
+                <p>Переконайтеся, що пакуєте лише найнеобхідніше, залиште трохи місця для сувенірів та використовуйте вакуумні пакети для одягу.</p>
+            </div>
+            <h3>Подорожі літаком</h3>
+            <div>
+                <p>Пам'ятайте, що у ручному багажі заборонено рідини понад 100 мл. Завжди майте з собою копії документів.</p>
+            </div>
+            <h3>Кращі туристичні напрямки</h3>
+            <div>
+                <p>Деякі з найпопулярніших напрямків: Париж, Нью-Йорк, Токіо, Київ. Дізнайтесь про найкращий час для візиту.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Розділ вкладок -->
+    <div class="tabs-section">
+        <h2>Популярні напрямки</h2>
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-1">Європа</a></li>
+                <li><a href="#tabs-2">Америка</a></li>
+                <li><a href="#tabs-3">Азія</a></li>
+            </ul>
+            <div id="tabs-1">
+                <p>Відвідайте романтичні міста Європи, такі як Париж, Рим, Барселона та інші.</p>
+            </div>
+            <div id="tabs-2">
+                <p>Досліджуйте відомі місця Америки, включаючи Нью-Йорк, Лос-Анджелес, Маямі та інші.</p>
+            </div>
+            <div id="tabs-3">
+                <p>Дивовижні культури Азії: Токіо, Сеул, Бангкок, Пекін – кожне місто має унікальну атмосферу.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Розділ вибору дати -->
+    <div class="datepicker-section">
+        <h2>Плануйте подорож</h2>
+        <p>Оберіть дату: <input type="text" id="datepicker"></p>
+    </div>
+
+    <!-- Розділ меню -->
+    <section class="menu-section">
+        <h2>Оберіть опції</h2>
+        <div>
+            <label for="menu">Оберіть туристичний напрямок:</label>
+            <select id="menu">
+                <option value="option1">Європа</option>
+                <option value="option2">Америка</option>
+                <option value="option3">Азія</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Розділ слайдера -->
+    <section class="slider-section">
+        <h2>Оцініть ваш досвід подорожей</h2>
+        <label for="slider">Виберіть значення:</label>
+        <input type="range" id="slider" min="1" max="100" value="50">
+        <span id="slider-value">50</span>
+    </section>
+
+    <script>
+        // Додаємо обробник подій для слайдера
+        document.getElementById('slider').addEventListener('input', function() {
+            // Оновлюємо значення в span при зміні слайдера
+            document.getElementById('slider-value').textContent = this.value;
+        });
+    </script>
+
+    <!-- Розділ підказок -->
+    <div class="tooltip-section">
+        <h2>Корисні ресурси</h2>
+        <a href="#" title="Перевірте найкращі місця для відпочинку!" class="tooltip">Топ місця для відпочинку</a>
+        <a href="#" title="Дізнайтесь більше про бюджетні подорожі!" class="tooltip">Поради з бюджетних подорожей</a>
+    </div>
+
+    <!-- Розділ каруселі зображень -->
+    <section class="carousel-section">
+        <h2>Популярні напрямки</h2>
+        <div class="carousel">
+            <div><img src="images/1.jpg" alt="Європа"></div>
+            <div><img src="images/2.jpg" alt="Америка"></div>
+            <div><img src="images/3.jpg" alt="Азія"></div>
+        </div>
+    </section>
+
+    <!-- Ініціалізація jQuery UI -->
+    <script>
+        $(document).ready(function() {
+            // Ініціалізація акордеона (спочатку закритий)
+            $("#accordion").accordion({
+                collapsible: true,
+                active: false, // Спочатку всі секції закриті
+                heightStyle: "content"
+            });
+            
+            // Ініціалізація вкладок
+            $("#tabs").tabs();
+            
+            // Ініціалізація вибору дати
+            $("#datepicker").datepicker();
+            
+            // Ініціалізація підказок
+            $(".tooltip").tooltip();
+
+            // Ініціалізація слайдера Slick
+            $('.carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+        });
+    </script>
+
+    <!-- Slick Slider JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+</body>
+</html>
